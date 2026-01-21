@@ -7,12 +7,12 @@ public class ProbaKonexioa {
     public static void main(String[] args) {
 
         DBKonexioa konex = new DBKonexioa();
-        Connection cn = null;
+        Connection cn;
 
         try {
-            system.out.print.ln("Sartu da 1");
-            cn =konex.konektatu();
-            system.out.print.ln("Sartu da 2");
+            System.out.println("Sartu da 1");
+            cn = konex.konektatu();
+            System.out.println("Sartu da 2");
             
             
             if (cn != null && !cn.isClosed()) {
@@ -23,7 +23,7 @@ public class ProbaKonexioa {
 
         } catch (SQLException e) {
             System.out.println("Errorea datu-basera konektatzean");
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }
