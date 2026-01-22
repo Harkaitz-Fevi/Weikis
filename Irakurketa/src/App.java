@@ -1,3 +1,7 @@
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
@@ -6,9 +10,9 @@ public class App {
         Connection cn;
 
         try {
-            System.out.println("Sartu da 1");
+           
             cn = konex.konektatu();
-            System.out.println("Sartu da 2");
+           
             
             
             if (cn != null && !cn.isClosed()) {
