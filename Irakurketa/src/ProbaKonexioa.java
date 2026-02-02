@@ -13,8 +13,7 @@ public class ProbaKonexioa {
             System.out.println("Sartu da 1");
             cn = konex.konektatu();
             System.out.println("Sartu da 2");
-            
-            
+
             if (cn != null && !cn.isClosed()) {
                 System.out.println("Komunikazio kanala irekita dago.");
                 cn.close();
@@ -27,4 +26,3 @@ public class ProbaKonexioa {
         }
     }
 }
-
