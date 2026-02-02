@@ -11,8 +11,8 @@ public class Irakurri_erabiltzaileak_eta_makinak {
         String lerroa;
         Connection cn = null;
 
-        try (BufferedReader br = new BufferedReader(new FileReader("data/erabiltzaileak_eta_makinak.csv"))) {
-
+        try (BufferedReader br = new BufferedReader(new FileReader(
+                "C:\\Users\\web25olorente\\Documents\\Garapen-Inguruneak\\WEIKIS\\Weikis\\data\\erabiltzaileak_eta_makinak.csv"))) {
             DBKonexioa konex = new DBKonexioa();
             cn = konex.konektatu();
 
@@ -21,7 +21,8 @@ public class Irakurri_erabiltzaileak_eta_makinak {
             String kontsulta = "INSERT INTO ERABILERA VALUES(?,?,?,?)";
             PreparedStatement agindua = cn.prepareStatement(kontsulta);
 
-            // != null esan nahi du, ejekutatu egingo dela irakurtzeko lerroak dauden bitartean
+            // != null esan nahi du, ejekutatu egingo dela irakurtzeko lerroak dauden
+            // bitartean
             // .csv-ko lerroak irakurtzen ditu amaierararte
             while ((lerroa = br.readLine()) != null) {
                 String[] datuak = lerroa.split(",", -1);
@@ -30,7 +31,15 @@ public class Irakurri_erabiltzaileak_eta_makinak {
                 agindua.setInt(1, Integer.parseInt(datuak[0]));
                 agindua.setInt(2, Integer.parseInt(datuak[1]));
                 agindua.setDate(3, java.sql.Date.valueOf(datuak[2]));
-                agindua.setDate(4, java.sql.Date.valueOf(datuak[3]));
+
+                String amaiera = datuak[3].trim();
+
+                // if (amaiera.isEmpty() || amaiera.equalsIgnoreCase("NULL")) {
+                if (amaiera.isEmpty()) {
+                    agindua.setNull(4, java.sql.Types.DATE);
+                } else {
+                    agindua.setDate(4, java.sql.Date.valueOf(amaiera));
+                }
 
                 agindua.executeUpdate();
             }

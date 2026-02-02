@@ -11,13 +11,13 @@ public class Irakurri_makinak {
         String lerroa;
         Connection cn = null;
 
-        try (BufferedReader br = new BufferedReader(new FileReader("data/makinak.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\web25olorente\\Documents\\Garapen-Inguruneak\\WEIKIS\\Weikis\\data\\makinak.csv"))) {
             DBKonexioa konex = new DBKonexioa();
             cn = konex.konektatu();
 
             br.readLine(); // Goiburua saltatzeko
 
-            String kontsulta = "INSERT INTO MAKINAK VALUES(?,?,?,?,?,?)";
+            String kontsulta = "INSERT INTO MAKINAK VALUES(?,?,?,?,?)";
             PreparedStatement agindua = cn.prepareStatement(kontsulta);
 
             // != null esan nahi du, ejekutatu egingo dela irakurtzeko lerroak dauden bitartean

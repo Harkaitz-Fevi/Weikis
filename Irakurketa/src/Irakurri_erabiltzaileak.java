@@ -11,7 +11,7 @@ public class Irakurri_erabiltzaileak {
         String lerroa;
         Connection cn = null;
 
-        try (BufferedReader br = new BufferedReader(new FileReader("data/erabiltzaileak.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\web25olorente\\Documents\\Garapen-Inguruneak\\WEIKIS\\Weikis\\data\\erabiltzaileak.csv"))) {
 
             DBKonexioa konex = new DBKonexioa();
             cn = konex.konektatu();

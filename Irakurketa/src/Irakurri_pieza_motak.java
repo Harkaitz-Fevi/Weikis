@@ -11,7 +11,7 @@ public class Irakurri_pieza_motak {
         String lerroa;
         Connection cn = null;
 
-        try (BufferedReader br = new BufferedReader(new FileReader("data/pieza_motak.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\web25olorente\\Documents\\Garapen-Inguruneak\\WEIKIS\\Weikis\\data\\pieza_motak.csv"))) {
             DBKonexioa konex = new DBKonexioa();
             cn = konex.konektatu();
             br.readLine(); // Goiburua saltatzeko

@@ -11,7 +11,7 @@ public class Irakurri_piezak {
         String lerroa;
         Connection cn = null;
 
-        try (BufferedReader br = new BufferedReader(new FileReader("data/piezak (1).csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\web25olorente\\Documents\\Garapen-Inguruneak\\WEIKIS\\Weikis\\data\\piezak.csv"))) {
 
             DBKonexioa konex = new DBKonexioa();
             cn = konex.konektatu();
@@ -25,8 +25,7 @@ public class Irakurri_piezak {
             // .csv-ko lerroak irakurtzen ditu amaierararte
             while ((lerroa = br.readLine()) != null) {
                 String[] datuak = lerroa.split(",");
-                System.out.println(datuak[0] + "-" + datuak[1] + "-" + datuak[2] + "-" + datuak[3] + "-" + datuak[4]
-                        + "-" + datuak[5]);
+                System.out.println(datuak[0] + "-" + datuak[1] + "-" + datuak[2] + "-" + datuak[3] + "-" + datuak[4] + "-" + datuak[5]);
 
                 agindua.setInt(1, Integer.parseInt(datuak[0]));
                 agindua.setString(2, datuak[1]);
