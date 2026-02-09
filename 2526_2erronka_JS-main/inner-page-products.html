@@ -17,6 +17,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/assets/css/WeiKis.css" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
 
@@ -47,6 +48,80 @@
       </div>
     </section>
 
+
+
+
+
+
+    <h3 class="H3">Datos de la base de datos</h3>
+
+    <!-- Aquí se mostrarán los datos -->
+
+    <button onclick="cargarPiezasEnLocalStorage()" class="BOTOIAK">Cargar piezas</button>
+
+
+
+
+
+
+    <h3 class="H3">Tabla: Piezak</h3>
+    <table class="TABLA">
+      <tr>
+        <td>
+          <button onclick="mostrarTablaPiezak()" id="TABLAKO_BOTOIA" class="BOTOIAK">Mostrar tabla</button>
+        </td>
+        <td>
+          <table border="1" id="tablaPiezak">
+            <thead id="thead">
+              <tr>
+                <th class="TABLA_DINAMIKOA">Izena</th>
+                <th class="TABLA_DINAMIKOA">Deskribapena</th>
+                <th class="TABLA_DINAMIKOA">Pisua</th>
+                <th class="TABLA_DINAMIKOA">Prezioa</th>
+                <th class="TABLA_DINAMIKOA">Stock</th>
+                <th class="TABLA_DINAMIKOA">Ekintzak</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <script src="products.js"></script>
+        </td>
+      </tr>
+    </table>
+
+
+
+
+
+
+
+
+
+    <h3 class="H3">Detalle de la pieza</h3>
+
+    <div id="detalle"></div>
+
+    <script>
+      const pieza = JSON.parse(localStorage.getItem('piezaSeleccionada'));
+
+      const div = document.getElementById('detalle');
+
+      div.innerHTML = `
+        <p><strong>Izena:</strong> ${pieza.Izena}</p>
+        <p><strong>Deskribapena:</strong> ${pieza.Deskribapena}</p>
+        <p><strong>Pisua:</strong> ${pieza.Pisua} g</p>
+        <p><strong>Prezioa:</strong> ${pieza.Prezioa}</p>
+        <p><strong>Stock:</strong> ${pieza.Stock}</p>
+    `;
+    </script>
+
+
+
+
+
+
+
     <section class="inner-page p-0">
       <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
@@ -61,7 +136,7 @@
 
   <footer id="footer">
     <div class="container">
-      <div class="copyright">&copy; Copyright <strong><span>Aitzol Elu</span></strong>.</div>
+      <div class="copyright">&copy; Copyright <strong><span>WeiKis</span></strong>.</div>
       <div class="credits">Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></div>
     </div>
   </footer>

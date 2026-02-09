@@ -1,0 +1,60 @@
+/* [style.css]    -->    #  Get Startet Button */
+
+.BOTOIAK {
+  color: #fff;
+  background-color: #343a40;
+  border-radius: 4px;
+  padding: 7px 25px 8px 25px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
+  display: inline-block;
+  border: 2.5px solid #ffc451;
+
+  margin-top: 1%;   margin-left: 5%;    margin-bottom: 2.5%;
+}
+
+.BOTOIAK:hover {
+  background: #ffbb38;
+  color: #343a40;
+}
+
+@media (max-width: 992px) {
+  .BOTOIAK {
+    padding: 7px 20px 8px 20px;
+    margin-right: 15px;
+  }
+}
+
+
+
+/* Tablak eta edukia */
+
+.H3 {
+  margin-top: 3%;   margin-left: 2.5%;    margin-right: 2.5%;
+  text-align: left;
+}
+
+
+.TABLA {
+  margin-top: 1.5%;   margin-left: 2.5%;    margin-right: 2.5%;
+  align-items: center;
+}
+
+.TABLA_DINAMIKOA th, td {
+  padding-top: 15px;    padding-left: 40px;   padding-right: 40px;   padding-bottom: 15px;
+}
+
+
+
+#thead th {
+  background-color: #ffc451;
+  color: #343a40;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+#tablaPiezak th,td:nth-child(n+3) {
+  text-align: center;
+}

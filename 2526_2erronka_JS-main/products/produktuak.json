@@ -1,5 +1,66 @@
-[{"id":0, "izena":"Arkatza", "prezioa":0.5, "stock":100},
- {"id":1, "izena":"Koadernoa", "prezioa":2.5, "stock":50},
- {"id":2, "izena":"Karpeta", "prezioa":1.75, "stock":80},
- {"id":3, "izena":"Ordenagailua", "prezioa":900.0, "stock":0},
- {"id":4, "izena":"Boligrafoa", "prezioa":2.0, "stock":12}]
+[
+    {
+        "Id_pieza": 101,
+        "Izena": "Torloju herdoilgaitza",
+        "Deskribapena": "M8 neurriko torloju industriala",
+        "Pisua": 15,
+        "Prezioa": 1,
+        "Stock": 250
+    },
+    {
+        "Id_pieza": 102,
+        "Izena": "Engranaje nagusia",
+        "Deskribapena": "Altzairuzko transmisio pieza",
+        "Pisua": 2500,
+        "Prezioa": 1,
+        "Stock": 174
+    },
+    {
+        "Id_pieza": 103,
+        "Izena": "Lotura plaka",
+        "Deskribapena": "L formako euskarri metalikoa",
+        "Pisua": 450,
+        "Prezioa": 2,
+        "Stock": 75
+    },
+    {
+        "Id_pieza": 104,
+        "Izena": "Torloju auto-zulatzailea",
+        "Deskribapena": "Zura lotzeko punta zorrotzeko torlojua",
+        "Pisua": 8,
+        "Prezioa": 1,
+        "Stock": 101
+    },
+    {
+        "Id_pieza": 105,
+        "Izena": "Engranaje konikoa",
+        "Deskribapena": "Mugimenduaren norabidea aldatzeko pieza",
+        "Pisua": 850,
+        "Prezioa": 3,
+        "Stock": 322
+    },
+    {
+        "Id_pieza": 106,
+        "Izena": "Zulaturiko plaka",
+        "Deskribapena": "Muntaia anitzetarako aluminiozko plaka",
+        "Pisua": 320,
+        "Prezioa": 1,
+        "Stock": 71
+    },
+    {
+        "Id_pieza": 107,
+        "Izena": "Engranaje helikoidala",
+        "Deskribapena": "Transmisio isilerako hortz inklinatuko pieza",
+        "Pisua": 1100,
+        "Prezioa": 4,
+        "Stock": 86
+    },
+    {
+        "Id_pieza": 108,
+        "Izena": "Allen torlojua",
+        "Deskribapena": "Burua barne-hexagonal duena",
+        "Pisua": 12,
+        "Prezioa": 1,
+        "Stock": 39
+    }
+]
