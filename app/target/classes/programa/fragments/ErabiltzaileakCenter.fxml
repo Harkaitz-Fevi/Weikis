@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programa.controller.ErabiltzaileakController" spacing="8.0" alignment="CENTER_LEFT" style="-fx-padding:10;">
+    <ScrollPane prefHeight="240.0" prefWidth="1000.0" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" fitToWidth="false" fitToHeight="false">
+        <content>
+            <TableView fx:id="erabiltzaileak" prefHeight="240.0">
+                <columns>
+                    <TableColumn text="Id_erabiltzaileak" prefWidth="100.0" />
+                    <TableColumn text="Izena" prefWidth="120.0" />
+                    <TableColumn text="Abizena1" prefWidth="120.0" />
+                    <TableColumn text="NAN" prefWidth="100.0" />
+                    <TableColumn text="Helbidea" prefWidth="180.0" />
+                    <TableColumn text="Posta Kodea" prefWidth="100.0" />
+                    <TableColumn text="Email" prefWidth="180.0" />
+                    <TableColumn text="Jaiotze data" prefWidth="140.0" />
+                    <TableColumn text="Alta data" prefWidth="140.0" />
+                </columns>
+            </TableView>
+        </content>
+    </ScrollPane>
+    <HBox spacing="12.0" alignment="CENTER_LEFT" style="-fx-padding:8 0 0 0;">
+        <children>
+            <Button text="Kendu" mnemonicParsing="false" onAction="#kenduErabiltzailea" styleClass="form-button" />
+            <Button text="Informazioa aldatu" mnemonicParsing="false" onAction="#informazioaAldatu" styleClass="form-button" />
+            <Button text="Gehitu" mnemonicParsing="false" onAction="#gehituErabiltzailea" styleClass="form-button" />
+        </children>
+    </HBox>
+</VBox>

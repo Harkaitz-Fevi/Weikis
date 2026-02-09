@@ -1,0 +1,15 @@
+programa\model\makina.class
+programa\controller\PiezaEzabatuController.class
+module-info.class
+programa\controller\MakinakController.class
+programa\controller\SecondaryController.class
+programa\App.class
+programa\controller\ErabiltzaileakController.class
+programa\controller\PrimaryController.class
+programa\controller\erabiltzailea_ezabatuController.class
+programa\controller\Makina_ezabatuController.class
+programa\controller\PiezakController.class
+programa\controller\PrincipalBienController.class
+programa\controller\ErabiltzaileaGehituController.class
+programa\controller\makina_gehituController.class
+programa\controller\PiezaGehituController.class

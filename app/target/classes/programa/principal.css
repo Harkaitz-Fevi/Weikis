@@ -1,0 +1,70 @@
+/* Styles for PrincipalBien and shared sidebar */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+#sidebar {
+    -fx-background-color: transparent;
+}
+.sidebar-button {
+    -fx-background-color: linear-gradient(#ffffff, #f7fbff);
+    -fx-font-size: 18px;
+    -fx-text-fill: #111;
+    -fx-alignment: center-left;
+    -fx-padding: 6 30;
+    -fx-background-radius: 24px;
+    -fx-border-radius: 24px;
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 4, 0, 0, 2);
+}
+.sidebar-button:hover {
+    -fx-background-color: #e9eef2;
+    -fx-border-color: #45b1ff;
+}
+#titleLabel {
+    -fx-font-size: 20px;
+    -fx-text-fill: #222;
+    -fx-alignment: center;
+    -fx-font-weight: 600;
+}
+#titleSeparator {
+    -fx-background-color: linear-gradient(#d0d0d0, #d0d0d0);
+    -fx-pref-height: 2px;
+}
+.avatar-stack {
+    -fx-background-color: white;
+    -fx-background-radius: 24px;
+}
+.header {
+    -fx-background-color: white;
+    -fx-pref-height: 80px;
+    -fx-padding: 10 20 10 20;
+    -fx-border-color: transparent transparent #e6e6e6 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+.header #logoView {
+    -fx-alignment: center-left;
+}
+.header #titleLabel {
+    -fx-alignment: center;
+}
+.header .avatar-stack {
+    -fx-alignment: center-right;
+}
+.center-image {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 6, 0, 0, 3);
+}
+
+.form-button {
+    -fx-background-color: linear-gradient(#45b1ff 0%, #1e90ff 100%);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-padding: 6 18;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 6, 0, 0, 3);
+}
+
+.form-button:hover {
+    -fx-background-color: linear-gradient(#57c0ff 0%, #2aa0ff 100%);
+}

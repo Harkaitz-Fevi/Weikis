@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import programa.App;
 import programa.model.makina;
 
-public class makinaController {
+public class makina_gehituController {
 
     @FXML TextField idMakina;
     @FXML TextField idizena;
@@ -16,7 +16,7 @@ public class makinaController {
     @FXML TextField idinstalazioa;
 
     @FXML
-    public void gehituMakina() throws IOException {
+    private void makinaGehitu() throws IOException {
 
         String id = idMakina.getText();
         String izen = idizena.getText();
@@ -29,5 +29,8 @@ public class makinaController {
         System.out.println("Makina Gehitu da: " + makinaBerria.toString());
         App.setRoot("primary");
 
+    }
+    public void atzeraBueltatu() throws IOException {
+        App.setRoot(App.getPreviousRoot());
     }
 }

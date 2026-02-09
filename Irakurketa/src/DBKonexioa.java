@@ -7,7 +7,7 @@ public class DBKonexioa {
 
     private static final String URL = "jdbc:mysql://localhost:3306/maltunaDB";
     private static final String USER = "root";
-    private static final String PASS = "06-Ab-ril2024";
+    private static final String PASS = "12345678";
 
     public Connection konektatu() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASS);

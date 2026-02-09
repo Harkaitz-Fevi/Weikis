@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programa.controller.PiezakController" spacing="8.0" alignment="CENTER_LEFT" style="-fx-padding:10;">
+    <ScrollPane prefHeight="240.0" prefWidth="700.0" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" fitToWidth="false" fitToHeight="false">
+        <content>
+            <TableView fx:id="erabiltzaileak" prefHeight="240.0">
+                <columns>
+                    <TableColumn fx:id="colId" text="id_pieza" prefWidth="80.0" />
+                    <TableColumn fx:id="colIzena" text="izena" prefWidth="120.0" />
+                    <TableColumn fx:id="colDesc" text="deskribapena" prefWidth="200.0" />
+                    <TableColumn fx:id="colPisua" text="pisua(gr)" prefWidth="100.0" />
+                    <TableColumn fx:id="colPrezioa" text="prezioa" prefWidth="100.0" />
+                </columns>
+            </TableView>
+        </content>
+    </ScrollPane>
+    <HBox spacing="12.0" alignment="CENTER_LEFT" style="-fx-padding:8 0 0 0;">
+        <children>
+            <Button text="Kendu" mnemonicParsing="false" onAction="#piezaKendu" styleClass="form-button" />
+            <Button text="Informazioa aldatu" mnemonicParsing="false" onAction="#informazioaAldatu" styleClass="form-button" />
+            <Button text="Gehitu" mnemonicParsing="false" onAction="#piezaGehitu" styleClass="form-button" />
+        </children>
+    </HBox>
+</VBox>
