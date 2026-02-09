@@ -12,7 +12,7 @@ public class Irakurri_erabiltzaileak_eta_makinak {
         Connection cn = null;
 
         try (BufferedReader br = new BufferedReader(new FileReader(
-                "C:\\Users\\web25olorente\\Documents\\Garapen-Inguruneak\\WEIKIS\\Weikis\\data\\erabiltzaileak_eta_makinak.csv"))) {
+                "data\\erabiltzaileak_eta_makinak.csv"))) {
             DBKonexioa konex = new DBKonexioa();
             cn = konex.konektatu();
 

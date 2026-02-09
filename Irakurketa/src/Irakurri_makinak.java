@@ -11,7 +11,7 @@ public class Irakurri_makinak {
         String lerroa;
         Connection cn = null;
 
-        try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\web25olorente\\Documents\\Garapen-Inguruneak\\WEIKIS\\Weikis\\data\\makinak.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("data\\makinak.csv"))) {
             DBKonexioa konex = new DBKonexioa();
             cn = konex.konektatu();
 
