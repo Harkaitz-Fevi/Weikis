@@ -1,0 +1,23 @@
+[
+	{
+		"Id_makina" : 1,
+		"Izena" : "Torloju-pretsa",
+		"Deskribapena" : "Metalezko piezak konprimitzeko makina",
+		"Potentzia" : 15,
+		"Instalazio_data" : "2023-05-12"
+	},
+	{
+		"Id_makina" : 2,
+		"Izena" : "Zulagailu industriala",
+		"Deskribapena" : "Zulaketa sakonetarako makina automatikoa",
+		"Potentzia" : 5,
+		"Instalazio_data" : "2022-11-20"
+	},
+	{
+		"Id_makina" : 3,
+		"Izena" : "Soldadura robota",
+		"Deskribapena" : "Doitasun handiko soldadura besoa",
+		"Potentzia" : 12,
+		"Instalazio_data" : "2024-01-15"
+	}
+]
