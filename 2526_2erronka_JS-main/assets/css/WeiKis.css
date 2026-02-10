@@ -58,3 +58,31 @@
 #tablaPiezak th,td:nth-child(n+3) {
   text-align: center;
 }
+
+/* Estilos para el botón Ver en la tabla */
+.btn-ver {
+    background-color: #ffc107;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-ver:hover {
+    background-color: #e5ac00;
+}
+
+/* Ajustes para la caja de descripción */
+.portfolio-description h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+}
