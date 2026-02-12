@@ -1,48 +1,57 @@
-// --- FUNCIONES ORIGINALES ---
-function Piezak() {
-    const contenedor = document.getElementById('Piezak');
-    contenedor.innerHTML = '';
-    fetch('datu_basea/piezak.json')
-        .then(response => response.json())
-        .then(data => {
-            const ul = document.createElement('ul');
-            data.forEach(pieza => {
-                const li = document.createElement('li');
-                li.textContent = `${pieza.Izena} - ${pieza.Deskribapena} | Peso: ${pieza.Pisua}g | Precio: ${pieza.Prezioa} | Stock: ${pieza.Stock}`;
-                ul.appendChild(li);
-            });
-            contenedor.appendChild(ul);
-        })
-        .catch(error => { contenedor.textContent = 'Error: ' + error; });
+// --- 1. INICIALIZACIÓN Y CARGA DE DATOS ---
+
+async function inicializarPaginaProductos() {
+    let piezak = JSON.parse(localStorage.getItem('piezak'));
+
+    if (!piezak) {
+        try {
+            const response = await fetch('datu_basea/piezak.json');
+            if (!response.ok) throw new Error("Ezinda JSONa kargatu");
+            piezak = await response.json();
+            localStorage.setItem('piezak', JSON.stringify(piezak));
+        } catch (error) {
+            console.error("Errorea datuekin:", error);
+            return;
+        }
+    }
+
+    mostrarTablaPiezak();
 }
 
-function cargarPiezasEnLocalStorage() {
-    fetch('datu_basea/piezak.json')
-        .then(response => response.json())
-        .then(data => {
-            localStorage.setItem('piezak', JSON.stringify(data));
-            console.log('Piezas guardadas en LocalStorage');
-        })
-        .catch(error => console.error('Error:', error));
-}
-
+/**
+ * Muestra la tabla restando del stock lo que ya está en el carrito
+ */
 function mostrarTablaPiezak() {
     const tablaBody = document.querySelector('#tablaPiezak tbody');
     if (!tablaBody) return;
+    
     tablaBody.innerHTML = '';
     const piezak = JSON.parse(localStorage.getItem('piezak'));
+    const carrito = JSON.parse(localStorage.getItem('carritoActual')) || [];
 
     if (piezak) {
         piezak.forEach(pieza => {
+            const itemEnCarrito = carrito.find(item => item.id === pieza.Id_pieza);
+            const cantidadEnCarrito = itemEnCarrito ? itemEnCarrito.cantidad : 0;
+            const stockDisponible = pieza.Stock - cantidadEnCarrito;
+
             const fila = document.createElement('tr');
             fila.innerHTML = `
-                <td>${pieza.Izena}</td>
+                <td class="fw-bold">${pieza.Izena}</td>
                 <td>${pieza.Deskribapena}</td>
-                <td>${pieza.Pisua}</td>
-                <td>${pieza.Prezioa}</td>
-                <td>${pieza.Stock}</td>
+                <td>${pieza.Pisua} g</td>
+                <td>${pieza.Prezioa}€</td>
                 <td>
-                    <button onclick="verPieza(${pieza.Id_pieza})" class="btn-ver">Ver</button>
+                    <span class="badge ${stockDisponible > 0 ? 'bg-success' : 'bg-danger'}">
+                        ${stockDisponible > 0 ? stockDisponible : 'Stock gabe'}
+                    </span>
+                </td>
+                <td class="text-center">
+                    <button onclick="verPieza(${pieza.Id_pieza})" 
+                            class="btn-ver" 
+                            ${stockDisponible <= 0 ? 'disabled style="opacity:0.5; cursor:not-allowed;"' : ''}>
+                        Ikusi
+                    </button>
                 </td>
             `;
             tablaBody.appendChild(fila);
@@ -60,9 +69,16 @@ function verPieza(id) {
     }
 }
 
+// --- 2. DETALLE DE PRODUCTO ---
+
 function fill_product_info() {
     const pieza = JSON.parse(localStorage.getItem('piezaSeleccionada'));
+    const carrito = JSON.parse(localStorage.getItem('carritoActual')) || [];
     if (!pieza) return;
+
+    const itemEnCarrito = carrito.find(item => item.id === pieza.Id_pieza);
+    const cantidadYaEnCarrito = itemEnCarrito ? itemEnCarrito.cantidad : 0;
+    const stockDisponibleReal = pieza.Stock - cantidadYaEnCarrito;
 
     const infoContainer = document.getElementById('info');
     if (infoContainer) {
@@ -71,67 +87,81 @@ function fill_product_info() {
             <ul>
                 <li><strong>Prezioa</strong>: ${pieza.Prezioa} €</li>
                 <li><strong>Pisua</strong>: ${pieza.Pisua} g</li>
-                <li><strong>Stock</strong>: ${pieza.Stock}</li>
+                <li><strong>Stock totala</strong>: ${pieza.Stock}</li>
+                <li><strong>Eskuragarri</strong>: <span class="text-primary fw-bold">${stockDisponibleReal}</span></li>
             </ul>
         `;
     }
 
     const descContainer = document.getElementById('description');
     if (descContainer) {
-        descContainer.innerHTML = `
-            <h2>Deskribapena</h2>
-            <p>${pieza.Deskribapena}</p>
-        `;
+        descContainer.innerHTML = `<h2>Deskribapena</h2><p>${pieza.Deskribapena}</p>`;
     }
 
     const buyBtnContainer = document.getElementById('buy_product');
     if (buyBtnContainer) {
-        buyBtnContainer.innerHTML = `
-            <button onclick="comprar()" class="btn btn-warning fw-bold w-100">Erosi</button>
-        `;
+        if (stockDisponibleReal <= 0) {
+            buyBtnContainer.innerHTML = `<button class="btn btn-secondary w-100" disabled>Stock gabe</button>`;
+        } else {
+            buyBtnContainer.innerHTML = `<button onclick="comprar()" class="btn btn-warning fw-bold w-100">Erosi</button>`;
+        }
     }
 }
 
-// --- COMPRA Y VALIDACIONES ---
+// --- 3. GESTIÓN DEL CARRITO ---
+
 function comprar() {
     const inputElement = document.getElementById('canti');
     const valorRaw = inputElement.value; 
     const pieza = JSON.parse(localStorage.getItem('piezaSeleccionada'));
+    let carrito = JSON.parse(localStorage.getItem('carritoActual')) || [];
 
     if (pieza) {
         if (!/^\d+$/.test(valorRaw)) {
-            mostrarAviso("Sartu zenbaki oso baliodun bat (ez letrak, ez ikurrik, ezta kmarik ere)");
+            mostrarAviso("Sartu zenbaki oso baliodun bat");
             return;
         }
 
         const cantidadPedida = parseInt(valorRaw);
+        const itemEnCarrito = carrito.find(item => item.id === pieza.Id_pieza);
+        const cantidadYaEnCarrito = itemEnCarrito ? itemEnCarrito.cantidad : 0;
+        const stockDisponibleReal = pieza.Stock - cantidadYaEnCarrito;
 
         if (cantidadPedida <= 0) {
             mostrarAviso("Kopuruak 0 baino handiagoa izan behar du");
             return;
         }
 
-        if (cantidadPedida > pieza.Stock) {
-            mostrarAviso(`Ez dago nahikoa kopuru (Stock: ${pieza.Stock})`);
+        if (cantidadPedida > stockDisponibleReal) {
+            mostrarAviso(`Ezin duzu kopuru hori gehitu. Eskuragarri: ${stockDisponibleReal}`);
             return;
         }
 
-        const compra = {
-            id: pieza.Id_pieza,
-            nombre: pieza.Izena,
-            precioUnidad: parseFloat(pieza.Prezioa),
-            cantidad: cantidadPedida,
-            subtotal: parseFloat(pieza.Prezioa) * cantidadPedida,
-            envio: 5.00
-        };
+        const existeIndex = carrito.findIndex(item => item.id === pieza.Id_pieza);
 
-        localStorage.setItem('carritoActual', JSON.stringify(compra));
+        if (existeIndex !== -1) {
+            carrito[existeIndex].cantidad += cantidadPedida;
+            carrito[existeIndex].subtotal = carrito[existeIndex].cantidad * carrito[existeIndex].precioUnidad;
+        } else {
+            carrito.push({
+                id: pieza.Id_pieza,
+                nombre: pieza.Izena,
+                precioUnidad: parseFloat(pieza.Prezioa),
+                cantidad: cantidadPedida,
+                subtotal: parseFloat(pieza.Prezioa) * cantidadPedida,
+                envio: 5.00
+            });
+        }
 
-        Toastify({
-            text: "Eskerrik asko! Ordainketara bideratzen...",
-            duration: 1500,
-            style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
-        }).showToast();
+        localStorage.setItem('carritoActual', JSON.stringify(carrito));
+
+        if (typeof Toastify === 'function') {
+            Toastify({
+                text: "Produktua saskira gehitu da!",
+                duration: 1500,
+                style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
+            }).showToast();
+        }
 
         setTimeout(() => {
             window.location.href = 'payment_1.html';
@@ -139,86 +169,123 @@ function comprar() {
     }
 }
 
-function mostrarAviso(mensaje) {
-    Toastify({
-        text: mensaje,
-        duration: 4000,
-        gravity: "top",
-        position: "right",
-        style: { background: "linear-gradient(to right, #e44d26, #f16529)", color: "white" }
-    }).showToast();
-}
+// --- 4. PASARELA DE PAGO ---
 
-// --- PASARELA DE PAGO (Aquí se cambia la imagen) ---
 function fill_payment_cards1() {
-    const datos = JSON.parse(localStorage.getItem('carritoActual'));
+    const carrito = JSON.parse(localStorage.getItem('carritoActual')) || [];
     const contenedorCards = document.getElementById('fill_cards');
     const displaySubtotal = document.getElementById('price');
     const displayTotal = document.getElementById('totalPrice');
     const displayItemsCount = document.getElementById('items');
 
-    if (datos && contenedorCards) {
-        // 1. Lógica para generar el nombre del archivo de imagen
-        // Reemplazamos espacios por guiones: "Allen torlojua" -> "Allen-torlojua"
-        let nombreFormateado = datos.nombre.replace(/\s+/g, '-');
-        
-        // 2. Determinar la extensión correcta (.jpeg para placas y engranaje helikoidala, .jpg para el resto)
+    if (!contenedorCards) return;
+
+    if (carrito.length === 0) {
+        contenedorCards.innerHTML = '<p class="text-center py-4">Saskia hutsik dago.</p>';
+        return;
+    }
+
+    let htmlContenido = "";
+    let subtotalAcumulado = 0;
+
+    carrito.forEach((datos, index) => {
+        let nombreImg = datos.nombre.replace(/\s+/g, '-');
         let extension = ".jpg";
         const productosJpeg = ["Engranaje-helikoidala", "Lotura-plaka", "Zulaturiko-plaka"];
-        
-        if (productosJpeg.includes(nombreFormateado)) {
-            extension = ".jpeg";
-        }
+        if (productosJpeg.includes(nombreImg)) extension = ".jpeg";
 
-        const rutaImagen = `assets/img/products/${nombreFormateado}${extension}`;
+        const rutaImagen = `assets/img/products/${nombreImg}${extension}`;
+        subtotalAcumulado += datos.subtotal;
 
-        // 3. Renderizar la tarjeta con la imagen dinámica
-        contenedorCards.innerHTML = `
+        htmlContenido += `
             <div class="row main align-items-center border-top border-bottom py-2">
                 <div class="col-2">
                     <img class="img-fluid" src="${rutaImagen}" alt="${datos.nombre}" 
                          onerror="this.src='assets/img/migual-altuna-logo-header.png'">
                 </div>
                 <div class="col">
-                    <div class="row text-muted">Produktuaren Izena</div>
+                    <div class="row text-muted">Produktua</div>
                     <div class="row">${datos.nombre}</div>
                 </div>
-                <div class="col">
+                <div class="col text-center">
                     <span class="px-3 border">${datos.cantidad}</span>
                 </div>
-                <div class="col text-end">${datos.precioUnidad}€ <span class="close">&#10005;</span></div>
+                <div class="col text-end">
+                    ${datos.subtotal.toFixed(2)}€ 
+                    <span class="close" onclick="eliminarDelCarrito(${index})" style="cursor:pointer; color:red; font-weight:bold; margin-left:10px;">&#10005;</span>
+                </div>
             </div>
         `;
+    });
 
-        displayItemsCount.innerText = `${datos.cantidad} items`;
-        displaySubtotal.innerText = `${datos.subtotal.toFixed(2)}€`;
-        const totalFinal = datos.subtotal + datos.envio;
-        displayTotal.innerText = `${totalFinal.toFixed(2)}€`;
-    }
+    contenedorCards.innerHTML = htmlContenido;
+    if (displayItemsCount) displayItemsCount.innerText = `${carrito.length} items`;
+    if (displaySubtotal) displaySubtotal.innerText = `${subtotalAcumulado.toFixed(2)}€`;
+    if (displayTotal) displayTotal.innerText = `${(subtotalAcumulado + 5).toFixed(2)}€`;
 }
 
-// --- FINALIZAR Y BAJAR STOCK ---
+function eliminarDelCarrito(index) {
+    let carrito = JSON.parse(localStorage.getItem('carritoActual')) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem('carritoActual', JSON.stringify(carrito));
+    fill_payment_cards1();
+}
+
+// --- 5. FINALIZAR COMPRA ---
+
 function go2print() {
-    const compra = JSON.parse(localStorage.getItem('carritoActual'));
+    const carrito = JSON.parse(localStorage.getItem('carritoActual')) || [];
     const inventario = JSON.parse(localStorage.getItem('piezak'));
 
-    if (compra && inventario) {
+    if (carrito.length > 0 && inventario) {
         const inventarioActualizado = inventario.map(pieza => {
-            if (pieza.Id_pieza === compra.id || pieza.Izena === compra.nombre) {
-                pieza.Stock = pieza.Stock - compra.cantidad;
+            const itemEnCarrito = carrito.find(item => item.id === pieza.Id_pieza);
+            if (itemEnCarrito) {
+                pieza.Stock = pieza.Stock - itemEnCarrito.cantidad;
             }
             return pieza;
         });
 
         localStorage.setItem('piezak', JSON.stringify(inventarioActualizado));
+        localStorage.removeItem('carritoActual');
         window.location.href = 'print.html';
+    } else {
+        mostrarAviso("Saskia hutsik dago!");
     }
 }
 
+// --- 6. UTILIDADES Y SESIÓN ---
+
+function mostrarAviso(mensaje) {
+    if (typeof Toastify === 'function') {
+        Toastify({
+            text: mensaje,
+            duration: 3000,
+            style: { background: "#e44d26" }
+        }).showToast();
+    } else {
+        alert(mensaje);
+    }
+}
+
+function bukatuSaioa() {
+    localStorage.removeItem('piezaSeleccionada');
+    localStorage.removeItem('carritoActual');
+    localStorage.removeItem('username');
+    localStorage.removeItem('piezak'); 
+    window.location.href = 'index.html';
+}
+
+/**
+ * NUEVA FUNCIÓN: Rellena el nombre del usuario en la pantalla final
+ */
 function bete_print() {
-    const nombreUsuario = localStorage.getItem('usuarioActual') || "Bezero";
-    const userSpan = document.getElementById('user');
-    if (userSpan) {
-        userSpan.innerText = nombreUsuario;
+    const nombreUsuario = localStorage.getItem('username');
+    const spanUser = document.getElementById('user');
+    
+    if (spanUser && nombreUsuario) {
+        spanUser.innerText = nombreUsuario;
+    } else if (spanUser) {
+        spanUser.innerText = "Bezeroa"; // Nombre por defecto si algo falla
     }
 }

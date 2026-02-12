@@ -2,26 +2,26 @@
 	
       {
          "id":"01",
-         "username": "admin",
-         "password": "admin"
+         "username": "Harkaitz",
+         "password": "Ferreira"
       },
 	
       {
          "id":"02",
-         "username": "urko",
-         "password": "zubiri"
+         "username": "Oier",
+         "password": "Conde"
       },
 
       {
          "id":"03",
-         "username": "123",
-         "password": "123"
+         "username": "weikis",
+         "password": "prietotecafelote"
       },
   
       {
          "id":"04",
-         "username": "patxi",
-         "password": "zubiri"
+         "username": "Oxel",
+         "password": "Lorente"
       }
       
    ]
