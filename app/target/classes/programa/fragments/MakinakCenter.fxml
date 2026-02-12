@@ -8,24 +8,24 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programa.controller.MakinakController" spacing="8.0" alignment="CENTER_LEFT" style="-fx-padding:10;">
-    <ScrollPane prefHeight="240.0" prefWidth="600.0" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED" fitToWidth="false" fitToHeight="false">
+    <ScrollPane prefHeight="240.0" prefWidth="900.0" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED">
         <content>
-            <TableView fx:id="erabiltzaileak" prefHeight="240.0">
+            <TableView fx:id="tablaMakinak" prefHeight="240.0">
                 <columns>
-                    <TableColumn text="Id_makina" prefWidth="80.0" />
-                    <TableColumn text="izena" prefWidth="120.0" />
-                    <TableColumn text="deskribapena" prefWidth="160.0" />
-                    <TableColumn text="potentzia(kw)" prefWidth="100.0" />
-                    <TableColumn text="instalazio data" prefWidth="140.0" />
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50.0" />
+                    <TableColumn fx:id="colIzena" text="Izena" prefWidth="120.0" />
+                    <TableColumn fx:id="colDeskribapena" text="Deskribapena" prefWidth="200.0" />
+                    <TableColumn fx:id="colPotentzia" text="Potentzia (W)" prefWidth="100.0" />
+                    <TableColumn fx:id="colData" text="Instalazio Data" prefWidth="120.0" />
                 </columns>
             </TableView>
         </content>
     </ScrollPane>
     <HBox spacing="12.0" alignment="CENTER_LEFT" style="-fx-padding:8 0 0 0;">
         <children>
-            <Button text="Kendu" mnemonicParsing="false" onAction="#makina_kendu" styleClass="form-button" />
-            <Button text="Informazioa aldatu" mnemonicParsing="false" onAction="#informazioa_aldatu" styleClass="form-button" />
-            <Button text="Gehitu" mnemonicParsing="false" onAction="#makina_gehitu" styleClass="form-button" />
+            <Button text="Kendu" mnemonicParsing="false" onAction="#kenduMakina" styleClass="form-button" />
+            <Button text="Informazioa aldatu" mnemonicParsing="false" onAction="#informazioaAldatu" styleClass="form-button" />
+            <Button text="Gehitu" mnemonicParsing="false" onAction="#gehituMakina" styleClass="form-button" />
         </children>
     </HBox>
 </VBox>

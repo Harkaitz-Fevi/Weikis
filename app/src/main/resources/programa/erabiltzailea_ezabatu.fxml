@@ -16,16 +16,16 @@
    <children>
       <AnchorPane fx:id="header" prefHeight="80.0" prefWidth="600.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fx:id="logoView" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="16.0" fitWidth="105.0" fitHeight="48.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoView" fitHeight="48.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="16.0">
                <image>
-                  <Image url="file:/C:/Users/web25hferreira/Documents/Weikis/2526_2erronka_JS-main/assets/img/migual-altuna-logo-header.png" />
+                  <Image url="@img/migual-altuna-logo-header.png" />
                </image>
             </ImageView>
-            <StackPane fx:id="avatarStack" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" prefWidth="48.0" prefHeight="48.0" styleClass="avatar-stack" style="-fx-padding:2;">
+            <StackPane fx:id="avatarStack" prefHeight="48.0" prefWidth="48.0" style="-fx-padding: 2;" styleClass="avatar-stack" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0">
                <children>
-                  <ImageView fx:id="avatarView" fitWidth="36.0" fitHeight="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="avatarView" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/C:/Users/web25hferreira/Documents/Weikis/2526_2erronka_JS-main/assets/img/favicon.png" />
+                        <Image url="@img/favicon.png" />
                      </image>
                      <clip>
                         <Circle centerX="18.0" centerY="18.0" radius="18.0" />
@@ -35,19 +35,22 @@
             </StackPane>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="60.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" styleClass="title-area">
+
+      <AnchorPane prefHeight="60.0" prefWidth="600.0" styleClass="title-area" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" layoutY="80.0">
          <children>
-            <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0" alignment="CENTER" spacing="6.0">
+            <VBox alignment="CENTER" spacing="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
                <children>
-                  <Label fx:id="pageTitleLabel" id="pageTitleLabel" text="Erabiltzaileak" styleClass="page-title" />
+                  <Label id="pageTitleLabel" fx:id="pageTitleLabel" styleClass="page-title" text="Erabiltzaileak - Ezabatu" />
                   <Separator prefWidth="120.0" />
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <Button onAction="#atzeraBueltatu" layoutX="321.0" layoutY="330.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Atzera bueltatu" textAlignment="CENTER" />
-      <Button layoutX="91.0" layoutY="330.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Erabiltzailea ezabatu" textAlignment="CENTER" />
-      <Label layoutX="146.0" layoutY="191.0" prefHeight="26.0" prefWidth="163.0" text="Ezabatzeko Erabiltzailea-a:" />
-      <TextField layoutX="310.0" layoutY="192.0" />
+
+      <Label layoutX="146.0" layoutY="191.0" prefHeight="26.0" prefWidth="163.0" text="Ezabatzeko Erabiltzaile ID-a:" />
+      <TextField fx:id="txtIdEzabatu" layoutX="310.0" layoutY="192.0" promptText="Sartu IDa" />
+
+      <Button layoutX="91.0" layoutY="330.0" mnemonicParsing="false" onAction="#ezabatu" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Erabiltzailea ezabatu" textAlignment="CENTER" />
+      <Button layoutX="321.0" layoutY="330.0" mnemonicParsing="false" onAction="#atzeraBueltatu" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Atzera bueltatu" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class DBKonexioa {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/maltunaDB";
+    private static final String URL = "jdbc:mysql://localhost:3306/maltunadb";
     private static final String USER = "root";
     private static final String PASS = "12345678";
 

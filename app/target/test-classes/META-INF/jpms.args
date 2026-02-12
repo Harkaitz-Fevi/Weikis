@@ -1,0 +1,4 @@
+--patch-module
+programa=_
+--add-reads
+programa=ALL-UNNAMED

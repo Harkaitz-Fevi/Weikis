@@ -2,22 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="programa.controller.PiezakController">
    <children>
       <ImageView fitHeight="48.0" fitWidth="105.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/C:/Users/web25hferreira/Documents/Weikis/2526_2erronka_JS-main/assets/img/migual-altuna-logo-header.png" />
+            <Image url="@img/migual-altuna-logo-header.png" />
          </image>
       </ImageView>
       <TableView fx:id="erabiltzaileak" layoutX="216.0" layoutY="127.2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="119.0" prefWidth="374.0" AnchorPane.leftAnchor="216.0" AnchorPane.topAnchor="127.0">
@@ -31,13 +30,13 @@
       </TableView>
       <ImageView layoutX="539.0" layoutY="7.0" fitWidth="48.0" fitHeight="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/C:/Users/web25hferreira/Documents/Weikis/2526_2erronka_JS-main/assets/img/favicon.png" />
+            <Image url="@img/favicon.png" />
          </image>
       </ImageView>
       <Button onAction="#piezaKendu" layoutX="408.0" layoutY="352.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Kendu " textAlignment="CENTER" />
       <Button onAction="#informazioaAldatu" layoutX="408.0" layoutY="306.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Informazioa aldatu" textAlignment="CENTER" />
       <Button onAction="#piezaGehitu" layoutX="213.0" layoutY="352.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Gehitu " textAlignment="CENTER" />
-      <!-- <Button layoutX="213.0" layoutY="306.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="178.0" style="-fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 4); -fx-background-color: linear-gradient(#45b1ff 0%, #1e90ff 100%);" text="Kontsulta" textAlignment="CENTER" /> -->
+      
       <BorderPane layoutY="52.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="348.0" prefWidth="600.0">
          <left>
             <VBox fx:id="sidebar" fillWidth="false" prefHeight="346.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER">
@@ -50,12 +49,10 @@
                   </Button>
                   <Button onAction="#erabiltzaileakBistaratu" minWidth="0.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="202.0" styleClass="sidebar-button" text="Erabiltzaileak" />
                </children>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
                <padding>
                   <Insets left="10.0" right="10.0" top="70.0" />
-               </padding></VBox>
+               </padding>
+            </VBox>
          </left>
          <top>
             <AnchorPane prefHeight="80.0" prefWidth="514.0" BorderPane.alignment="CENTER">

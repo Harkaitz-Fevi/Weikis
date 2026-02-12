@@ -4,5 +4,5 @@
         "Irakurketa/lib/mysql-connector-j-9.6.0.jar"
     ],
     "java.debug.settings.onBuildFailureProceed": true,
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

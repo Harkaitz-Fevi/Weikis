@@ -1,4 +1,8 @@
-programa\model\makina.class
+programa\controller\erabiltzailea_ezabatuController.class
+programa\model\Erabiltzailea.class
+programa\controller\Makina_ezabatuController.class
+programa\Main.class
+programa\controller\Makina_aldatuController.class
 programa\controller\PiezaEzabatuController.class
 module-info.class
 programa\controller\MakinakController.class
@@ -6,10 +10,12 @@ programa\controller\SecondaryController.class
 programa\App.class
 programa\controller\ErabiltzaileakController.class
 programa\controller\PrimaryController.class
-programa\controller\erabiltzailea_ezabatuController.class
-programa\controller\Makina_ezabatuController.class
+programa\model\pieza.class
 programa\controller\PiezakController.class
+programa\controller\Erabiltzailea_aldatuController.class
 programa\controller\PrincipalBienController.class
 programa\controller\ErabiltzaileaGehituController.class
+programa\model\Makina.class
+programa\controller\PiezaAldatuController.class
 programa\controller\makina_gehituController.class
 programa\controller\PiezaGehituController.class

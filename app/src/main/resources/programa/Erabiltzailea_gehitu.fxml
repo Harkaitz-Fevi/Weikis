@@ -16,16 +16,16 @@
    <children>
       <AnchorPane fx:id="header" prefHeight="80.0" prefWidth="600.0" styleClass="header" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fx:id="logoView" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="16.0" fitWidth="105.0" fitHeight="48.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoView" fitHeight="48.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="16.0">
                <image>
-                  <Image url="file:/C:/Users/web25hferreira/Documents/Weikis/2526_2erronka_JS-main/assets/img/migual-altuna-logo-header.png" />
+                  <Image url="@img/migual-altuna-logo-header.png" />
                </image>
             </ImageView>
-            <StackPane fx:id="avatarStack" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" prefWidth="48.0" prefHeight="48.0" styleClass="avatar-stack" style="-fx-padding:2;">
+            <StackPane fx:id="avatarStack" prefHeight="48.0" prefWidth="48.0" style="-fx-padding: 2;" styleClass="avatar-stack" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0">
                <children>
-                  <ImageView fx:id="avatarView" fitWidth="36.0" fitHeight="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="avatarView" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/C:/Users/web25hferreira/Documents/Weikis/2526_2erronka_JS-main/assets/img/favicon.png" />
+                        <Image url="@img/favicon.png" />
                      </image>
                      <clip>
                         <Circle centerX="18.0" centerY="18.0" radius="18.0" />
@@ -35,71 +35,82 @@
             </StackPane>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="60.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" styleClass="title-area">
+
+      <AnchorPane prefHeight="60.0" prefWidth="600.0" styleClass="title-area" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" layoutY="80.0">
          <children>
-            <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0" alignment="CENTER" spacing="6.0">
+            <VBox alignment="CENTER" spacing="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
                <children>
-                  <Label fx:id="pageTitleLabel" id="pageTitleLabel" text="Erabiltzaileak" styleClass="page-title" />
+                  <Label id="pageTitleLabel" fx:id="pageTitleLabel" styleClass="page-title" text="Erabiltzaileak" />
                   <Separator prefWidth="120.0" />
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <Label layoutX="80.0" layoutY="90.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Erabiltzailearen Id:">
+
+      <Label layoutX="80.0" layoutY="155.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Erabiltzailearen Id:">
          <padding>
             <Insets left="15.0" right="15.0" />
          </padding>
       </Label>
-      <Label layoutX="312.0" layoutY="90.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Izena:">
+      <TextField fx:id="txtId" layoutX="237.0" layoutY="152.0" prefHeight="26.0" prefWidth="53.0" />
+
+      <Label layoutX="312.0" layoutY="155.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Izena:">
          <padding>
             <Insets left="15.0" right="15.0" />
          </padding>
       </Label>
-      <Label layoutX="80.0" layoutY="178.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Helbidea:">
+      <TextField fx:id="txtIzena" layoutX="400.0" layoutY="152.0" prefHeight="26.0" prefWidth="118.0" />
+
+      <Label layoutX="80.0" layoutY="191.0" prefHeight="22.0" prefWidth="69.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="NAN:">
          <padding>
             <Insets left="15.0" right="15.0" />
          </padding>
       </Label>
-      <Label layoutX="363.0" layoutY="178.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Posta kodea:">
+      <TextField fx:id="txtNAN" layoutX="162.0" layoutY="189.0" prefHeight="26.0" prefWidth="127.0" />
+
+      <Label layoutX="304.0" layoutY="191.0" prefHeight="22.0" prefWidth="85.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Abizena:">
          <padding>
             <Insets left="15.0" right="15.0" />
          </padding>
       </Label>
-      <Label layoutX="79.0" layoutY="221.0" prefHeight="22.0" prefWidth="70.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Email:">
+      <TextField fx:id="txtAbizena" layoutX="400.0" layoutY="189.0" prefHeight="26.0" prefWidth="118.0" />
+
+      <Label layoutX="80.0" layoutY="228.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Helbidea:">
          <padding>
             <Insets left="15.0" right="15.0" />
          </padding>
       </Label>
-      <TextField layoutX="237.0" layoutY="87.0" prefHeight="26.0" prefWidth="53.0" />
-      <TextField layoutX="400.0" layoutY="87.0" prefHeight="26.0" prefWidth="118.0" />
-      <TextField layoutX="162.0" layoutY="219.0" prefHeight="26.0" prefWidth="353.0" />
-      <Button onAction="#atzeraBueltatu" layoutX="321.0" layoutY="330.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Atzera bueltatu" textAlignment="CENTER" />
-      <Button onAction="#gehitu" layoutX="91.0" layoutY="330.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Erabiltzailea sartu" textAlignment="CENTER" />
-      <Label layoutX="304.0" layoutY="131.0" prefHeight="22.0" prefWidth="85.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Abizena:">
+      <TextField fx:id="txtHelbidea" layoutX="173.0" layoutY="225.0" prefHeight="26.0" prefWidth="186.0" />
+
+      <Label layoutX="363.0" layoutY="228.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Posta kodea:">
          <padding>
             <Insets left="15.0" right="15.0" />
          </padding>
       </Label>
-      <TextField layoutX="400.0" layoutY="129.0" prefHeight="26.0" prefWidth="118.0" />
-      <Label layoutX="80.0" layoutY="131.0" prefHeight="22.0" prefWidth="69.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="NAN:">
+      <TextField fx:id="txtPostaKodea" layoutX="479.0" layoutY="225.0" prefHeight="26.0" prefWidth="98.0" />
+
+      <Label layoutX="79.0" layoutY="261.0" prefHeight="22.0" prefWidth="70.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Email:">
          <padding>
             <Insets left="15.0" right="15.0" />
          </padding>
       </Label>
-      <TextField layoutX="162.0" layoutY="129.0" prefHeight="26.0" prefWidth="127.0" />
-      <TextField layoutX="173.0" layoutY="175.0" prefHeight="26.0" prefWidth="186.0" />
-      <TextField layoutX="479.0" layoutY="175.0" prefHeight="26.0" prefWidth="98.0" />
-      <Label layoutX="77.0" layoutY="263.0" prefHeight="22.0" prefWidth="111.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Jaiotze data:">
+      <TextField fx:id="txtEmail" layoutX="162.0" layoutY="259.0" prefHeight="26.0" prefWidth="353.0" />
+
+      <Label layoutX="77.0" layoutY="293.0" prefHeight="22.0" prefWidth="111.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Jaiotze data:">
          <padding>
             <Insets left="15.0" right="15.0" />
          </padding>
       </Label>
-      <TextField layoutX="200.0" layoutY="261.0" prefHeight="26.0" prefWidth="127.0" />
-      <Label layoutX="344.0" layoutY="263.0" prefHeight="22.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Alta data:">
+      <TextField fx:id="txtJaiotzeData" layoutX="200.0" layoutY="291.0" prefHeight="26.0" prefWidth="127.0" promptText="YYYY-MM-DD" />
+
+      <Label layoutX="344.0" layoutY="293.0" prefHeight="22.0" prefWidth="90.0" style="-fx-background-radius: 20; -fx-border-color: linear-gradient(#45b1ff 0%, #1e90ff 100%); -fx-border-radius: 20; -fx-border-width: 1.5;" text="Alta data:">
          <padding>
             <Insets left="15.0" right="15.0" />
          </padding>
       </Label>
-      <TextField layoutX="440.0" layoutY="261.0" prefHeight="26.0" prefWidth="118.0" />
+      <TextField fx:id="txtAltaData" layoutX="440.0" layoutY="291.0" prefHeight="26.0" prefWidth="118.0" promptText="YYYY-MM-DD" />
+
+      <Button layoutX="91.0" layoutY="345.0" mnemonicParsing="false" onAction="#gehitu" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Erabiltzailea sartu" textAlignment="CENTER" />
+      <Button layoutX="321.0" layoutY="345.0" mnemonicParsing="false" onAction="#atzeraBueltatu" prefHeight="36.0" prefWidth="178.0" styleClass="form-button" text="Atzera bueltatu" textAlignment="CENTER" />
    </children>
 </AnchorPane>
